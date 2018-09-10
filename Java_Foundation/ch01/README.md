@@ -1,5 +1,5 @@
-# CH 01
-## 1.Java入门简介
+# CH 01 Java基础
+## 1.Java简介
 ### （1）Java三个版本
 **JavaSE（Java Standard Edition）**：定义在个人计算机应用  
 **JavaEE（Java Enterprise Edition）**：企业端，定位在服务器端的应用  
