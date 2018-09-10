@@ -17,3 +17,4 @@ JavaME（Java Micro Edition）：定位在消费性电子产品应用
 - 保存为Welcome.java（文件名必须为Welcome，大小写必须一致，即**文件名必须与类名一致**）
 - 编译（编译器船舰class字节码文件）
 - 解释并运行
+[](Welcome.java)
