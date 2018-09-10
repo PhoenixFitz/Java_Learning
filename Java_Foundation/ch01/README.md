@@ -12,4 +12,8 @@ JavaME（Java Micro Edition）：定位在消费性电子产品应用
 **JVM（Java Virtual Machine）**：虚拟计算机  
 **JRE（Java Runtime Enviroment）**：包含Java虚拟机、库函数、运行Java应用程序所必须的文件  
 **JDK（Java Development Kit）**：包含JRE，增加编译器和调试器等用于程序开发的文件
-
+### （5）尝试编写第一个代码
+- 使用记事本，编写代码
+- 保存为Welcome.java（文件名必须为Welcome，大小写必须一致，即**文件名必须与类名一致**）
+- 编译（编译器船舰class字节码文件）
+- 解释并运行
