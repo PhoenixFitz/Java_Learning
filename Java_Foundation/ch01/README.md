@@ -1,4 +1,4 @@
-# CH 01 Java基础
+﻿# CH 01 Java基础
 ## 1.Java简介
 ### （1）Java三个版本
 **JavaSE（Java Standard Edition）**：定义在个人计算机应用  
@@ -17,4 +17,6 @@ JavaME（Java Micro Edition）：定位在消费性电子产品应用
 - 保存为Welcome.java（文件名必须为Welcome，大小写必须一致，即**文件名必须与类名一致**）
 - 编译cmd（编译器创建class字节码文件），输入javac welcome.java
 - 解释并运行，输入java Welcome  
-[Welcome.java](Welcome.java)
+[Welcome.java](Welcome.java)  
+**所有代码必须位于类里面，一个源文件可包含多个类，但至多只能声明一个public类，且源文件名必须和其中定义的public类名相同**
+**main方法： public static void main（String[] args）{...}**
