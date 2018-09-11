@@ -1,20 +1,19 @@
-# CH 01 JavaåŸºç¡€
-## 1.Javaç®€ä»‹
-### ï¼ˆ1ï¼‰Javaä¸‰ä¸ªç‰ˆæœ¬
-**JavaSEï¼ˆJava Standard Editionï¼‰**ï¼šå®šä¹‰åœ¨ä¸ªäººè®¡ç®—æœºåº”ç”¨  
-**JavaEEï¼ˆJava Enterprise Editionï¼‰**ï¼šä¼ä¸šç«¯ï¼Œå®šä½åœ¨æœåŠ¡å™¨ç«¯çš„åº”ç”¨  
-JavaMEï¼ˆJava Micro Editionï¼‰ï¼šå®šä½åœ¨æ¶ˆè´¹æ€§ç”µå­äº§å“åº”ç”¨
-### ï¼ˆ2ï¼‰Javaç‰¹æ€§å’Œä¼˜åŠ¿
-**è·¨å¹³å°/å¯ç§»æ¤æ€§**ï¼Œå®‰å…¨æ€§ï¼Œé¢å‘å¯¹è±¡ï¼Œåˆ†å¸ƒå¼ï¼Œå¤šçº¿ç¨‹ï¼Œå¥å£®æ€§
-### ï¼ˆ3ï¼‰Javaåº”ç”¨ç¨‹åºçš„è¿è¡Œæœºåˆ¶
-æºæ–‡ä»¶ï¼ˆ\*.javaï¼‰â†’javaç¼–è¯‘å™¨â†’å­—èŠ‚ç æ–‡ä»¶ï¼ˆ\*.classï¼‰â†’ç±»è£…è½½å™¨â†’å­—èŠ‚ç æ ¡éªŒå™¨â†’è§£é‡Šå™¨â†’ç³»ç»Ÿå¹³å°
-### ï¼ˆ4ï¼‰JDKã€JREå’ŒJVMçš„ä½œç”¨å’ŒåŒºåˆ«
-**JVMï¼ˆJava Virtual Machineï¼‰**ï¼šè™šæ‹Ÿè®¡ç®—æœº  
-**JREï¼ˆJava Runtime Enviromentï¼‰**ï¼šåŒ…å«Javaè™šæ‹Ÿæœºã€åº“å‡½æ•°ã€è¿è¡ŒJavaåº”ç”¨ç¨‹åºæ‰€å¿…é¡»çš„æ–‡ä»¶  
-**JDKï¼ˆJava Development Kitï¼‰**ï¼šåŒ…å«JREï¼Œå¢žåŠ ç¼–è¯‘å™¨å’Œè°ƒè¯•å™¨ç­‰ç”¨äºŽç¨‹åºå¼€å‘çš„æ–‡ä»¶
-### ï¼ˆ5ï¼‰å°è¯•ç¼–å†™ç¬¬ä¸€ä¸ªä»£ç 
-- ä½¿ç”¨è®°äº‹æœ¬ï¼Œç¼–å†™ä»£ç 
-- ä¿å­˜ä¸ºWelcome.javaï¼ˆæ–‡ä»¶åå¿…é¡»ä¸ºWelcomeï¼Œå¤§å°å†™å¿…é¡»ä¸€è‡´ï¼Œå³**æ–‡ä»¶åå¿…é¡»ä¸Žç±»åä¸€è‡´**ï¼‰
-- ç¼–è¯‘ï¼ˆç¼–è¯‘å™¨èˆ¹èˆ°classå­—èŠ‚ç æ–‡ä»¶ï¼‰
-- è§£é‡Šå¹¶è¿è¡Œ  
-[Welcome.java](Welcome.java)
+# CH 01 Java»ù´¡
+## 1.Java¼ò½é
+### £¨1£©JavaÈý¸ö°æ±¾
+**JavaSE£¨Java Standard Edition£©**£º¶¨ÒåÔÚ¸öÈË¼ÆËã»úÓ¦ÓÃ  
+**JavaEE£¨Java Enterprise Edition£©**£ºÆóÒµ¶Ë£¬¶¨Î»ÔÚ·þÎñÆ÷¶ËµÄÓ¦ÓÃ  
+JavaME£¨Java Micro Edition£©£º¶¨Î»ÔÚÏû·ÑÐÔµç×Ó²úÆ·Ó¦ÓÃ
+### £¨2£©JavaÌØÐÔºÍÓÅÊÆ
+**¿çÆ½Ì¨/¿ÉÒÆÖ²ÐÔ**£¬°²È«ÐÔ£¬ÃæÏò¶ÔÏó£¬·Ö²¼Ê½£¬¶àÏß³Ì£¬½¡×³ÐÔ
+### £¨3£©JavaÓ¦ÓÃ³ÌÐòµÄÔËÐÐ»úÖÆ
+Ô´ÎÄ¼þ£¨\*.java£©¡újava±àÒëÆ÷¡ú×Ö½ÚÂëÎÄ¼þ£¨\*.class£©¡úÀà×°ÔØÆ÷¡ú×Ö½ÚÂëÐ£ÑéÆ÷¡ú½âÊÍÆ÷¡úÏµÍ³Æ½Ì¨
+### £¨4£©JDK¡¢JREºÍJVMµÄ×÷ÓÃºÍÇø±ð
+**JVM£¨Java Virtual Machine£©**£ºÐéÄâ¼ÆËã»ú  
+**JRE£¨Java Runtime Enviroment£©**£º°üº¬JavaÐéÄâ»ú¡¢¿âº¯Êý¡¢ÔËÐÐJavaÓ¦ÓÃ³ÌÐòËù±ØÐëµÄÎÄ¼þ  
+**JDK£¨Java Development Kit£©**£º°üº¬JRE£¬Ôö¼Ó±àÒëÆ÷ºÍµ÷ÊÔÆ÷µÈÓÃÓÚ³ÌÐò¿ª·¢µÄÎÄ¼þ
+### £¨5£©³¢ÊÔ±àÐ´µÚÒ»¸ö´úÂë
+- Ê¹ÓÃ¼ÇÊÂ±¾£¬±àÐ´´úÂë
+- ±£´æÎªWelcome.java£¨ÎÄ¼þÃû±ØÐëÎªWelcome£¬´óÐ¡Ð´±ØÐëÒ»ÖÂ£¬¼´**ÎÄ¼þÃû±ØÐëÓëÀàÃûÒ»ÖÂ**£©
+- ±àÒëcmd£¨±àÒëÆ÷´´½¨class×Ö½ÚÂëÎÄ¼þ£©£¬ÊäÈëjavac welcome.java
+- ½âÊÍ²¢ÔËÐÐ£¬ÊäÈëjava Welcome
