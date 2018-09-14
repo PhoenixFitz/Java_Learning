@@ -91,7 +91,7 @@ java.math包下面的两个有用的类：BigInteger和BigDecimal，这两个类
 \| |按位或
 ^|按位异或
 <<|左移运算符，左移1位相当于乘2
->>|右移1位相当于除2取商
+\>>|右移1位相当于除2取商
 
 &和|既是逻辑运算符，也是位运算符。如果两侧操作数都是boolean类型，就作为逻辑运算符。如果两侧的操作数是整数类型，就是位运算符。
 #### 6）字符串连接符
@@ -103,3 +103,56 @@ java.math包下面的两个有用的类：BigInteger和BigDecimal，这两个类
 其中 x 为 boolean 类型表达式，先计算 x 的值，若为true，则整个运算的结果为表达式 y 的值，否则整个运算结果为表达式 z 的值。
 #### 8）运算符优先级
 **表达式里面优先使用小括号来组织**，逻辑与、逻辑或、逻辑非的优先级一定要熟悉（逻辑非>逻辑与>逻辑或）。
+### （11）类型转换
+#### 1）自动类型转换
+自动类型转换指的是容量小的数据类型可以自动转换为容量大的数据类型。
+可以将整型常量直接赋值给byte、 short、 char等类型变量，而不需要进行强制类型转换，只要不超出其表数范围即可。
+#### 2）强制类型转换
+> 语法格式： **(type)var**
+#### 3）基本类型常见错误
+- 操作数比较大时，要留意是否溢出，尤其是整数操作时。
+[TestTypeConvertError.java](TestTypeConvertError.java)
+### （12）使用Scanner获取键盘输入
+[TestScanner.java](TestScanner.java)
+### （13）控制语句
+#### 1）选择结构
+- if单选择结构[TestIf.java](TestIf.java)
+- if-else双选择结构[TestIfElse.java](TestIfElse.java)
+- if-else if-else多选择结构[TestIfElseIfElse](TestIfElseIfElse)
+- switch结构[TestSwitch.java](TestSwitch.java)
+
+> java.lang包中的Math类提供了一些用于数学计算的方法。Math.random()该方法用于产生一个0到1区间的double类型的随机数，但是不包括1。
+
+`int i = (int) (6 * Math.random()); //产生：[0，5]之间的随机整数`
+#### 2)循环结构
+- while循环语句[TestWhile.java](TestWhile.java)
+- for循环语句[TestFor.java](TestFor.java)
+- 嵌套循环[TestQianTao1.java](TestQianTao1.java)[TestQianTao2.java](TestQianTao2.java)
+#### 3)break和continue语句
+- break用于强行退出循环，不执行循环中剩余的语句。[TestBreak.java](TestBreak.java)
+- continue 语句用在循环语句体中，用于终止某次循环过程，即跳过循环体中尚未执行的语句，接着进行下一次是否执行循环的判定。[TestContinue.java](TestContinue.java)
+### （14）方法的定义
+方法就是一段用来完成特定功能的代码片段，类似于其它语言的函数。方法用于定义该类或该类的实例的行为特征和功能实现。 方法是类和对象行为特征的抽象。面向对象中，整个程序的基本单位是类，**方法是从属于类和对象的**。
+>[修饰符1  修饰符2  …]   返回值类型    方法名(形式参数列表){  
+    Java语句；… … …  
+ }
+
+- 形式参数：在方法声明时用于接收外界传入的数据。
+- 实参：调用方法时实际传给方法的数据。
+- 返回值：方法在执行完毕后返还给调用它的环境的数据。
+- 返回值类型：事先约定的返回值的数据类型，如无返回值，必须显示指定为为void。
+
+**注意事项**：Java中进行方法调用中传递参数时，遵循值传递的原则(传递的都是数据的副本)，基本类型传递的是该数据值的copy值；引用类型传递的是该对象引用的copy值，但指向的是同一个对象。  
+[TestMethod.java](TestMethod.java)
+### （15）方法的重载
+方法的重载是指一个类中可以定义多个方法名相同，但参数不同的方法。 调用时，会根据不同的参数自动匹配对应的方法。  
+重载构成的条件：形参类型、形参个数、形参顺序不同  
+不构成重载：只有返回值不同不构成方法的重载；只有形参的名称不同，不构成方法的重载。  
+[TestOverload.java](TestOverload.java)
+### （16）递归算法
+- 定义递归头。解答：什么时候不调用自身方法。如果没有头，将陷入死循环，也就是递归的结束条件。
+- 递归体。解答：什么时候需要调用自身方法。
+
+递归的缺陷：递归调用会占用大量的系统堆栈，内存耗用多，在递归调用层次多时速度要比循环慢的多，所以在使用递归时要慎重。
+
+## 2.面向对象基础
