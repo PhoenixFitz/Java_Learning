@@ -127,7 +127,7 @@ java.math包下面的两个有用的类：BigInteger和BigDecimal，这两个类
 #### 2)循环结构
 - while循环语句[TestWhile.java](TestWhile.java)
 - for循环语句[TestFor.java](TestFor.java)
-- 嵌套循环[TestQianTao1.java](TestQianTao1.java)[TestQianTao2.java](TestQianTao2.java)
+- 嵌套循环[TestQianTao1.java](TestQianTao1.java)  [TestQianTao2.java](TestQianTao2.java)
 #### 3)break和continue语句
 - break用于强行退出循环，不执行循环中剩余的语句。[TestBreak.java](TestBreak.java)
 - continue 语句用在循环语句体中，用于终止某次循环过程，即跳过循环体中尚未执行的语句，接着进行下一次是否执行循环的判定。[TestContinue.java](TestContinue.java)
@@ -157,3 +157,16 @@ java.math包下面的两个有用的类：BigInteger和BigDecimal，这两个类
 [TestRecursion.java](TestRecursion.java)
 
 ## 2.面向对象基础
+### （1）面向对象和面向过程
+- 都是解决问题的思维方式，都是代码组织的方式
+- 解决简单问题可以使用面向过程
+- 解决复杂问题：宏观上使用面向对象把握，微观处理上仍然是面向过程。
+### （2）对象和类的概念
+- 对象（Objecit，Instance）是具体的事物;类（Class）是对对象的抽象;
+- 类可以看成一类对象的模板，对象可以看成该类的一个具体实例。
+- 类是用于描述同一类型的对象的一个抽象概念，类中定义了这一类对象所应具有的共同的属性、方法。 
+- 属性用于定义该类或该类对象包含的数据或者说静态特征。属性作用范围是整个类体。
+- 方法用于定义该类或该类实例的行为特征和功能实现，面向对象中，整个程序的基本单位是类，方法是从属于类和对象的。  
+
+[SxtStu.java](SxtStu.java)
+### （3）
