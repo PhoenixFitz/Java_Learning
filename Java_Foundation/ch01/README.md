@@ -68,7 +68,7 @@ double|8字节
 浮点型默认为double类型  
 **浮点类型float，double的数据不适合在不容许舍入误差的金融计算领域，不能用于比较。如果需要进行不产生舍入误差的精确数字计算或比较，需要使用BigDecimal类。**  
 java.math包下面的两个有用的类：BigInteger和BigDecimal，这两个类可以处理任意长度的数值。BigInteger实现了任意精度的整数运算。BigDecimal实现了任意精度的浮点运算。  
-[TestPrimitiveDataType.java](TestPrimitiveDataType.java)
+[TestPrimitiveDataType.java](Code/TestPrimitiveDataType.java)
 #### 3）字符型变量/常量
 用单引号来表示字符常量
 #### 4）boolean类型
@@ -96,7 +96,7 @@ java.math包下面的两个有用的类：BigInteger和BigDecimal，这两个类
 &和|既是逻辑运算符，也是位运算符。如果两侧操作数都是boolean类型，就作为逻辑运算符。如果两侧的操作数是整数类型，就是位运算符。
 #### 6）字符串连接符
 “+”运算符两侧的操作数中只要有一个是字符串(String)类型，系统会自动将另一个操作数转换为字符串然后再进行连接。
-[TestString.java](TestString.java)
+[TestString.java](Code/TestString.java)
 #### 7）条件运算符
 > x ? y : z
 
@@ -111,26 +111,26 @@ java.math包下面的两个有用的类：BigInteger和BigDecimal，这两个类
 > 语法格式： **(type)var**
 #### 3）基本类型常见错误
 - 操作数比较大时，要留意是否溢出，尤其是整数操作时。
-[TestTypeConvertError.java](TestTypeConvertError.java)
+[TestTypeConvertError.java](Code/TestTypeConvertError.java)
 ### （12）使用Scanner获取键盘输入
 [TestScanner.java](TestScanner.java)
 ### （13）控制语句
 #### 1）选择结构
-- if单选择结构[TestIf.java](TestIf.java)
-- if-else双选择结构[TestIfElse.java](TestIfElse.java)
-- if-else if-else多选择结构[TestIfElseIfElse](TestIfElseIfElse)
-- switch结构[TestSwitch.java](TestSwitch.java)
+- if单选择结构[TestIf.java](Code/TestIf.java)
+- if-else双选择结构[TestIfElse.java](Code/TestIfElse.java)
+- if-else if-else多选择结构[TestIfElseIfElse](Code/TestIfElseIfElse)
+- switch结构[TestSwitch.java](Code/TestSwitch.java)
 
 > java.lang包中的Math类提供了一些用于数学计算的方法。Math.random()该方法用于产生一个0到1区间的double类型的随机数，但是不包括1。
 
 `int i = (int) (6 * Math.random()); //产生：[0，5]之间的随机整数`
 #### 2)循环结构
-- while循环语句[TestWhile.java](TestWhile.java)
-- for循环语句[TestFor.java](TestFor.java)
-- 嵌套循环[TestQianTao1.java](TestQianTao1.java)  [TestQianTao2.java](TestQianTao2.java)
+- while循环语句[TestWhile.java](Code/TestWhile.java)
+- for循环语句[TestFor.java](Code/TestFor.java)
+- 嵌套循环[TestQianTao1.java](Code/TestQianTao1.java)  [TestQianTao2.java](Code/TestQianTao2.java)
 #### 3)break和continue语句
 - break用于强行退出循环，不执行循环中剩余的语句。[TestBreak.java](TestBreak.java)
-- continue 语句用在循环语句体中，用于终止某次循环过程，即跳过循环体中尚未执行的语句，接着进行下一次是否执行循环的判定。[TestContinue.java](TestContinue.java)
+- continue 语句用在循环语句体中，用于终止某次循环过程，即跳过循环体中尚未执行的语句，接着进行下一次是否执行循环的判定。[TestContinue.java](Code/TestContinue.java)
 ### （14）方法的定义
 方法就是一段用来完成特定功能的代码片段，类似于其它语言的函数。方法用于定义该类或该类的实例的行为特征和功能实现。 方法是类和对象行为特征的抽象。面向对象中，整个程序的基本单位是类，**方法是从属于类和对象的**。
 >[修饰符1  修饰符2  …]   返回值类型    方法名(形式参数列表){  
@@ -143,18 +143,18 @@ java.math包下面的两个有用的类：BigInteger和BigDecimal，这两个类
 - 返回值类型：事先约定的返回值的数据类型，如无返回值，必须显示指定为为void。
 
 **注意事项**：Java中进行方法调用中传递参数时，遵循值传递的原则(传递的都是数据的副本)，基本类型传递的是该数据值的copy值；引用类型传递的是该对象引用的copy值，但指向的是同一个对象。  
-[TestMethod.java](TestMethod.java)
+[TestMethod.java](Code/TestMethod.java)
 ### （15）方法的重载
 方法的重载是指一个类中可以定义多个方法名相同，但参数不同的方法。 调用时，会根据不同的参数自动匹配对应的方法。  
 重载构成的条件：形参类型、形参个数、形参顺序不同  
 不构成重载：只有返回值不同不构成方法的重载；只有形参的名称不同，不构成方法的重载。  
-[TestOverload.java](TestOverload.java)
+[TestOverload.java](Code/TestOverload.java)
 ### （16）递归算法
 - 定义递归头。解答：什么时候不调用自身方法。如果没有头，将陷入死循环，也就是递归的结束条件。
 - 递归体。解答：什么时候需要调用自身方法。
 
 递归的缺陷：递归调用会占用大量的系统堆栈，内存耗用多，在递归调用层次多时速度要比循环慢的多，所以在使用递归时要慎重。  
-[TestRecursion.java](TestRecursion.java)
+[TestRecursion.java](Code/TestRecursion.java)
 
 ## 2.面向对象基础
 ### （1）面向对象和面向过程
@@ -167,7 +167,7 @@ java.math包下面的两个有用的类：BigInteger和BigDecimal，这两个类
 - 类是用于描述同一类型的对象的一个抽象概念，类中定义了这一类对象所应具有的共同的属性、方法。 
 - 属性用于定义该类或该类对象包含的数据或者说静态特征。属性作用范围是整个类体。
 - 方法用于定义该类或该类实例的行为特征和功能实现，面向对象中，整个程序的基本单位是类，方法是从属于类和对象的。  
-[SxtStu.java](SxtStu.java)
+[SxtStu.java](Code/SxtStu.java)
 ### （3）内存分析
 ava虚拟机的内存可以分为三个区域：栈stack、堆heap、方法区method area。
 #### 1）栈
@@ -189,7 +189,7 @@ ava虚拟机的内存可以分为三个区域：栈stack、堆heap、方法区me
 - 构造器虽然有返回值，但是不能定义返回值类型(返回值的类型肯定是本类)，不能在构造器里使用return返回某个值。
 - 如果我们没有定义构造器，则编译器会自动定义一个无参的构造函数。如果已定义则编译器不会自动添加。
 - **构造器的方法名必须和类名一致。**  
-[TestConstructor.java](TestConstructor.java)  [User.java](User.java)
+[TestConstructor.java](Code/TestConstructor.java)  [User.java](Code/User.java)
 ### （5）垃圾回收机制
 垃圾回收的过程：发现无用的对象；回收无用对象占用的内存空间。  
 垃圾回收相关算法：引用计数法（缺点“循环引用的无用对象”无法识别），引用可达法（根搜索算法）。  
@@ -207,16 +207,16 @@ this的本质就是“创建好的对象的地址”，由于在构造方法调�
 - 在程序中产生二义性之处，应使用this来指明当前对象;普通方法中，this总是指向调用该方法的对象。构造方法中，this总是指向正要初始化的对象。
 - 使用this关键字调用重载的构造方法，避免相同的初始化代码。但只能在构造方法中用，并且必须位于构造方法的第一句。
 - this不能用于static方法中。  
-[TestThis.java](TestThis.java)
+[TestThis.java](Code/TestThis.java)
 ### （7）static关键字
 - **static修饰的成员变量和方法，从属于类；普通变量和方法从属于对象的。**在类被载入时被显式初始化。
 - 对于该类的所有对象来说，static成员变量只有一份，被该类的所有对象共享。
 - 一般用“类名.类属性/方法”来调用。  
-[User2.java](User2.java)
+[User2.java](Code/User2.java)
 ### （8）参数传值机制
 - 基本数据类型参数的传值：传递的是值的副本。 副本改变不会影响原件。
 - 引用类型参数的传值：引用类型指的是“对象的地址”，副本和原参数都指向了同一个“地址”，改变“副本指向地址对象的值，也意味着原参数指向对象的值也发生了改变”。  
-[User3.java](User3.java)
+[User3.java](Code/User3.java)
 ### （9）包（package）机制
 
 
