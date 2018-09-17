@@ -27,11 +27,18 @@ public class User2 {
 		System.out.println(company);
 	}
 	
+	// 静态块
+	/*static {
+		System.out.println("执行类的初始化工作");
+		company="Apple";
+		printCompany();
+	}  */
+	
 	public static void main(String[] args) {
 		User2 u=new User2(101,"liang");
 		User2.printCompany();
 		User2.company="DELL";
-		User2.printCompany();
+		User2.printCompany();  // 用“类名.类属性/方法”来调用
 		u.login();
 	}
 }
