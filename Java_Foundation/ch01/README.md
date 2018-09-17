@@ -17,7 +17,7 @@ JavaME（Java Micro Edition）：定位在消费性电子产品应用
 - 保存为Welcome.java（文件名必须为Welcome，大小写必须一致，即**文件名必须与类名一致**）
 - 编译cmd（编译器创建class字节码文件），输入javac welcome.java
 - 解释并运行，输入java Welcome  
-[Welcome.java](Welcome.java)  
+[Welcome.java](Code/Welcome.java)  
 **所有代码必须位于类里面，一个源文件可包含多个类，但至多只能声明一个public类，且源文件名必须和其中定义的public类名相同**  
 **main方法： public static void main（String[] args）{...}**  
 eg.[桌球小游戏]（桌球小游戏）
@@ -213,6 +213,11 @@ this的本质就是“创建好的对象的地址”，由于在构造方法调�
 - 对于该类的所有对象来说，static成员变量只有一份，被该类的所有对象共享。
 - 一般用“类名.类属性/方法”来调用。  
 [User2.java](User2.java)
+### （8）参数传值机制
+- 基本数据类型参数的传值：传递的是值的副本。 副本改变不会影响原件。
+- 引用类型参数的传值：引用类型指的是“对象的地址”，副本和原参数都指向了同一个“地址”，改变“副本指向地址对象的值，也意味着原参数指向对象的值也发生了改变”。  
+[User3.java](User3.java)
+### （9）包（package）机制
 
 
 
