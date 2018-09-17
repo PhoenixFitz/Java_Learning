@@ -1,0 +1,156 @@
+# Java基础
+## 1.Java三个版本
+**JavaSE（Java Standard Edition）**：定义在个人计算机应用  
+**JavaEE（Java Enterprise Edition）**：企业端，定位在服务器端的应用  
+JavaME（Java Micro Edition）：定位在消费性电子产品应用
+## 2.Java特性和优势
+**跨平台/可移植性**，安全性，面向对象，分布式，多线程，健壮性
+## 3.Java应用程序的运行机制
+源文件（\*.java）→java编译器→字节码文件（\*.class）→类装载器→字节码校验器→解释器→系统平台
+## 4.JDK、JRE和JVM的作用和区别
+**JVM（Java Virtual Machine）**：虚拟计算机  
+**JRE（Java Runtime Enviroment）**：包含Java虚拟机、库函数、运行Java应用程序所必须的文件  
+**JDK（Java Development Kit）**：包含JRE，增加编译器和调试器等用于程序开发的文件
+## 5.尝试编写第一个代码
+- 使用记事本，编写代码
+- 保存为Welcome.java（文件名必须为Welcome，大小写必须一致，即**文件名必须与类名一致**）
+- 编译cmd（编译器创建class字节码文件），输入javac welcome.java
+- 解释并运行，输入java Welcome  
+[Welcome.java](Code/Welcome.java)  
+**所有代码必须位于类里面，一个源文件可包含多个类，但至多只能声明一个public类，且源文件名必须和其中定义的public类名相同**  
+**main方法： public static void main（String[] args）{...}**  
+eg.[桌球小游戏]（桌球小游戏）
+## 6.标识符使用规范
+- 表示**类名**的标识符：每个单词的首字母大写，如Man，GoodMan
+- 表示**方法和变量**的标识符：第一个单词小写，从第二个单词开始首字母大写如eatFood（）
+- 表示**常量**的标识符：大写字母和下划线，如MAX_VALUE
+## 7.变量
+**变量的本质**：代表一个“可操作的存储空间”，可通过访问变量名来操纵这个“存储空间”存储的值。
+
+类型|声明位置|从属于|生命周期|初始化
+---|---|---|---|---
+局部变量|方法或语句块内部|方法/语句块|从生命位置开始，知道方法或语句块执行完毕，局部变量消失|必须在使用前先声明、初始化再使用
+成员变量|类内部，方法外部|对象|对象创建，成员变量也跟着创建。对象消失，成员变量也跟着消失。|若不初始化，它会自动初始化成该类型的默认初始值。
+静态变量|类内部，static修饰|类|类被加载，静态变量就有效；类被卸载，静态变量消失|若不初始化，它会自动初始化成该类型的默认初始值。
+
+数据类型|初始值
+---|---
+int|0
+double|0.0
+char|'\u0000'
+boolean|false
+
+## 8.常量（constant）
+通常指的是一个固定的值，在Java中，利用关键字**final**来定义一个常量。常量一旦被初始化后便不能再更改其值。
+## 9.基本数据类型
+### （1）整型
+类型|占用存储空间|表数范围
+---|---|---
+byte|1字节|-2^7 ～ 2^7-1
+short|2字节|-2^15 ～ 2^15-1
+int|4字节|-2^31 ～ 2^31-1
+long|8字节|-2^63 ～ 2^63-1
+
+进制类型|表示方法
+---|---
+八进制|以0开头
+十六进制|以0x或0X开头
+二进制|以0b或0B开头
+
+**Java语言的整型常数默认为int型，声明long型常量可以在常量后加'L'。**
+### （2）浮点型
+类型|占用存储空间
+---|---
+float|4字节
+double|8字节
+
+浮点型默认为double类型  
+**浮点类型float，double的数据不适合在不容许舍入误差的金融计算领域，不能用于比较。如果需要进行不产生舍入误差的精确数字计算或比较，需要使用BigDecimal类。**  
+java.math包下面的两个有用的类：BigInteger和BigDecimal，这两个类可以处理任意长度的数值。BigInteger实现了任意精度的整数运算。BigDecimal实现了任意精度的浮点运算。  
+[TestPrimitiveDataType.java](Code/TestPrimitiveDataType.java)
+### （3）字符型变量/常量
+用单引号来表示字符常量
+### （4）boolean类型
+有两个常量值，true和false，在内存中占一位，**不可以使用0或非0整数代替true和false**，和C语言不同。
+## 10.运算符
+### （1）算术运算符
+- 整数运算：如果两个操作数有一个为Long, 则结果也为long；没有long时，结果为int。即使操作数全为short，byte，结果也是int。
+- 浮点运算：如果两个操作数有一个为double，则结果为double；只有两个操作数都是float，则结果才为float。
+- 取模运算：其操作数可以为浮点数,一般使用整数，结果是“余数”，“余数”符号和左边操作数相同。
+### （2）赋值及其扩展运算符
+### （3）关系运算符
+关系运算的结果是布尔值：true/false
+### （4）逻辑运算符
+逻辑异或 ^ ，相同为false，不同为true
+### （5）位运算符
+位运算符|说明
+---|---
+~|取反
+&|按位与
+\| |按位或
+^|按位异或
+<<|左移运算符，左移1位相当于乘2
+\>>|右移1位相当于除2取商
+
+&和|既是逻辑运算符，也是位运算符。如果两侧操作数都是boolean类型，就作为逻辑运算符。如果两侧的操作数是整数类型，就是位运算符。
+### （6）字符串连接符
+“+”运算符两侧的操作数中只要有一个是字符串(String)类型，系统会自动将另一个操作数转换为字符串然后再进行连接。
+[TestString.java](Code/TestString.java)
+### （7）条件运算符
+> x ? y : z
+
+其中 x 为 boolean 类型表达式，先计算 x 的值，若为true，则整个运算的结果为表达式 y 的值，否则整个运算结果为表达式 z 的值。
+### （8）运算符优先级
+**表达式里面优先使用小括号来组织**，逻辑与、逻辑或、逻辑非的优先级一定要熟悉（逻辑非>逻辑与>逻辑或）。
+## 11.类型转换
+### （1）自动类型转换
+自动类型转换指的是容量小的数据类型可以自动转换为容量大的数据类型。
+可以将整型常量直接赋值给byte、 short、 char等类型变量，而不需要进行强制类型转换，只要不超出其表数范围即可。
+### （2）强制类型转换
+> 语法格式： **(type)var**
+### （3）基本类型常见错误
+- 操作数比较大时，要留意是否溢出，尤其是整数操作时。
+[TestTypeConvertError.java](Code/TestTypeConvertError.java)
+## 12.使用Scanner获取键盘输入
+[TestScanner.java](TestScanner.java)
+## 13.控制语句
+### （1）选择结构
+- if单选择结构[TestIf.java](Code/TestIf.java)
+- if-else双选择结构[TestIfElse.java](Code/TestIfElse.java)
+- if-else if-else多选择结构[TestIfElseIfElse](Code/TestIfElseIfElse)
+- switch结构[TestSwitch.java](Code/TestSwitch.java)
+
+> java.lang包中的Math类提供了一些用于数学计算的方法。Math.random()该方法用于产生一个0到1区间的double类型的随机数，但是不包括1。
+
+`int i = (int) (6 * Math.random()); //产生：[0，5]之间的随机整数`
+### （2)循环结构
+- while循环语句[TestWhile.java](Code/TestWhile.java)
+- for循环语句[TestFor.java](Code/TestFor.java)
+- 嵌套循环[TestQianTao1.java](Code/TestQianTao1.java)  [TestQianTao2.java](Code/TestQianTao2.java)
+### （3）break和continue语句
+- break用于强行退出循环，不执行循环中剩余的语句。[TestBreak.java](Code/TestBreak.java)
+- continue 语句用在循环语句体中，用于终止某次循环过程，即跳过循环体中尚未执行的语句，接着进行下一次是否执行循环的判定。[TestContinue.java](Code/TestContinue.java)
+## 14.方法的定义
+方法就是一段用来完成特定功能的代码片段，类似于其它语言的函数。方法用于定义该类或该类的实例的行为特征和功能实现。 方法是类和对象行为特征的抽象。面向对象中，整个程序的基本单位是类，**方法是从属于类和对象的**。
+>[修饰符1  修饰符2  …]   返回值类型    方法名(形式参数列表){  
+    Java语句；… … …  
+ }
+
+- 形式参数：在方法声明时用于接收外界传入的数据。
+- 实参：调用方法时实际传给方法的数据。
+- 返回值：方法在执行完毕后返还给调用它的环境的数据。
+- 返回值类型：事先约定的返回值的数据类型，如无返回值，必须显示指定为为void。
+
+**注意事项**：Java中进行方法调用中传递参数时，遵循值传递的原则(传递的都是数据的副本)，基本类型传递的是该数据值的copy值；引用类型传递的是该对象引用的copy值，但指向的是同一个对象。  
+[TestMethod.java](Code/TestMethod.java)
+## 15.方法的重载
+方法的重载是指一个类中可以定义多个方法名相同，但参数不同的方法。 调用时，会根据不同的参数自动匹配对应的方法。  
+重载构成的条件：形参类型、形参个数、形参顺序不同  
+不构成重载：只有返回值不同不构成方法的重载；只有形参的名称不同，不构成方法的重载。  
+[TestOverload.java](Code/TestOverload.java)
+## 16.递归算法
+- 定义递归头。解答：什么时候不调用自身方法。如果没有头，将陷入死循环，也就是递归的结束条件。
+- 递归体。解答：什么时候需要调用自身方法。
+
+递归的缺陷：递归调用会占用大量的系统堆栈，内存耗用多，在递归调用层次多时速度要比循环慢的多，所以在使用递归时要慎重。  
+[TestRecursion.java](Code/TestRecursion.java)
