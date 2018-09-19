@@ -1,13 +1,13 @@
 public class TestEquals { 
     public static void main(String[] args) {
-        Person p1 = new Person(123,"¸ßä¿");
-        Person p2 = new Person(123,"¸ßĞ¡Æß");     
-        System.out.println(p1==p2);     //false£¬²»ÊÇÍ¬Ò»¸ö¶ÔÏó
-        System.out.println(p1.equals(p2));  //true£¬idÏàÍ¬ÔòÈÏÎªÁ½¸ö¶ÔÏóÄÚÈİÏàÍ¬
-        String s1 = new String("ÉĞÑ§ÌÃ");
-        String s2 = new String("ÉĞÑ§ÌÃ");
-        System.out.println(s1==s2);         //false, Á½¸ö×Ö·û´®²»ÊÇÍ¬Ò»¸ö¶ÔÏó
-        System.out.println(s1.equals(s2));  //true,  Á½¸ö×Ö·û´®ÄÚÈİÏàÍ¬
+        Person p1 = new Person(1006,"Klaus");
+        Person p2 = new Person(1006,"Niklaus");     
+        System.out.println(p1==p2);     //falseï¼Œä¸æ˜¯åŒä¸€ä¸ªå¯¹è±¡
+        System.out.println(p1.equals(p2));  //trueï¼Œidç›¸åŒåˆ™è®¤ä¸ºä¸¤ä¸ªå¯¹è±¡å†…å®¹ç›¸åŒ
+        String s1 = new String("DELL");
+        String s2 = new String("DELL");
+        System.out.println(s1==s2);         //false, ä¸¤ä¸ªå­—ç¬¦ä¸²ä¸æ˜¯åŒä¸€ä¸ªå¯¹è±¡
+        System.out.println(s1.equals(s2));  //true,  ä¸¤ä¸ªå­—ç¬¦ä¸²å†…å®¹ç›¸åŒ
     }
 }
 class Person {
@@ -22,7 +22,7 @@ class Person {
             return false;
         }else {
             if(obj instanceof Person) {
-                Person c = (Person)obj;
+                Person c = (Person)obj;  //å¼ºåˆ¶è½¬æ¢
                 if(c.id==this.id) {
                     return true;
                 }
