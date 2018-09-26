@@ -2,7 +2,7 @@ package test_encapsulation;
 
 public class Person {
 	private String name;
-	int age;      //Ã»ÓĞpublic¹Ø¼ü×ÖµÄÊôĞÔ£¬Ö»¿ÉÒÔ±»±¾°üÏÂÃæµÄÀà·ÃÎÊ
-	public int height;  // ¿ÉÒÔ±»¸ÃÏîÄ¿ÏÂµÄÆäËû°ü·ÃÎÊ
-	protected int weight;
+	int age;      //æ²¡æœ‰publicå…³é”®å­—çš„å±æ€§ï¼Œåªå¯ä»¥è¢«æœ¬åŒ…ä¸‹é¢çš„ç±»è®¿é—®
+	public int height;  // å¯ä»¥è¢«è¯¥é¡¹ç›®ä¸‹çš„å…¶ä»–åŒ…è®¿é—®
+	protected int weight; //å¯ä»¥è¢«åŒä¸€ä¸ªåŒ…çš„ç±»ä»¥åŠå…¶ä»–åŒ…ä¸­çš„å­ç±»è®¿é—®
 }
