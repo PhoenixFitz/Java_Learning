@@ -5,11 +5,11 @@ import test_encapsulation.Person;
 
 public class TestEncapsulation {
 	public static void main(String[] args) {
-//		Human h=new Human();  //Ä¬ÈÏÀàÔÚÍ¬Ò»¸ö°üÖĞ¿ÉÒÔÊ¹ÓÃ£¬²»Í¬°üÊÇ²»ÄÜ·ÃÎÊµÄ
+//		Human h=new Human();  //é»˜è®¤ç±»åœ¨åŒä¸€ä¸ªåŒ…ä¸­å¯ä»¥ä½¿ç”¨ï¼Œä¸åŒåŒ…æ˜¯ä¸èƒ½è®¿é—®çš„
 		Person p=new Person();
-//		p.name="klaus";  //nameÎªdefault¹Ø¼ü×ÖµÄÊôĞÔ£¬Ö»¿ÉÒÔ±»ËüËùÊôµÄ±¾°üÏÂÃæµÄÀà·ÃÎÊ
+//		p.name="klaus";  //nameä¸ºdefaultå…³é”®å­—çš„å±æ€§ï¼Œåªå¯ä»¥è¢«å®ƒæ‰€å±çš„æœ¬åŒ…ä¸‹é¢çš„ç±»è®¿é—®
 		p.height=183;
-//		p.weight=140;  //²»Í¬°üÇÒ²»ÊÇPerson×ÓÀà£¬²»ÄÜ·ÃÎÊ
+//		p.weight=140;  //ä¸åŒåŒ…ä¸”ä¸æ˜¯Personå­ç±»ï¼Œä¸èƒ½è®¿é—®
 		
 		
 	}
@@ -19,6 +19,6 @@ public class TestEncapsulation {
 
 class Girl extends Person{
 	void sayGood() {
-		System.out.println(height);  //²»Í¬°üµÄÆäËû×ÓÀà¿ÉÒÔ·ÃÎÊ
+		System.out.println(weight);  //ä¸åŒåŒ…çš„å…¶ä»–å­ç±»å¯ä»¥è®¿é—®
 	}
 }
