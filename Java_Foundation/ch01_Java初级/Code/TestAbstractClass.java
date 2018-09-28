@@ -1,22 +1,26 @@
-//³éÏóÀà
+//æŠ½è±¡ç±»
 abstract class Animal {
-    abstract public void shout();  //³éÏó·½·¨£¬Ã»ÓĞ·½·¨Ìå£¬Ö»ÓĞÉùÃ÷
+    abstract public void shout();  //æŠ½è±¡æ–¹æ³•ï¼Œæ²¡æœ‰æ–¹æ³•ä½“ï¼Œåªæœ‰å£°æ˜
+    
+    public void run(){
+	    System.out.println("å¿«è·‘!");
+    }
 }
 class Dog extends Animal { 
-    //×ÓÀà±ØĞëÊµÏÖ¸¸ÀàµÄ³éÏó·½·¨£¬·ñÔò±àÒë´íÎó
+    //å­ç±»å¿…é¡»å®ç°çˆ¶ç±»çš„æŠ½è±¡æ–¹æ³•ï¼Œå¦åˆ™ç¼–è¯‘é”™è¯¯
     public void shout() {
-        System.out.println("ÍôÍôÍô£¡");
+        System.out.println("æ±ªæ±ªæ±ªï¼");
     }
     public void seeDoor(){
-        System.out.println("¿´ÃÅÖĞ....");
+        System.out.println("çœ‹é—¨ä¸­....");
     }
 }
-//²âÊÔ³éÏóÀà
+//æµ‹è¯•æŠ½è±¡ç±»
 public class TestAbstractClass {
     public static void main(String[] args) {
         Dog a = new Dog();
-	Animal b = new Dog(); //¿ÉÒÔ´´½¨
-      //Animal c = new Animal(); // ±àÒë´íÎó£¬²»ÄÜÓÃnewÀ´ÊµÀı»¯³éÏóÀà¡£
+	Animal b = new Dog(); //å¯ä»¥åˆ›å»º
+      //Animal c = new Animal(); // ç¼–è¯‘é”™è¯¯ï¼Œä¸èƒ½ç”¨newæ¥å®ä¾‹åŒ–æŠ½è±¡ç±»ã€‚
         a.shout();
         a.seeDoor();
     }
