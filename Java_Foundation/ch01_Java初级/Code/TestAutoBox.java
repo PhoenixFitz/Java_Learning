@@ -1,31 +1,31 @@
 
 /**
- * ²âÊÔ×Ô¶¯×°Ïä£¬×Ô¶¯²ğÏä
- * @author hanbaozhen1
+ * æµ‹è¯•è‡ªåŠ¨è£…ç®±ï¼Œè‡ªåŠ¨æ‹†ç®±
+ * @author 
  *
  */
 
 public class TestAutoBox {
 	public static void main(String[] args){
-		Integer a=234; //×Ô¶¯×°Ïä¡£ Integer a =Integer.valueOf(234);
-		int b=a;// ×Ô¶¯²ğÏä¡£±àÒëÆ÷»áĞŞ¸Ä³É£º int b= a.intValue();
+		Integer a=234; //è‡ªåŠ¨è£…ç®±ã€‚ Integer a =Integer.valueOf(234);
+		int b=a;// è‡ªåŠ¨æ‹†ç®±ã€‚ç¼–è¯‘å™¨ä¼šä¿®æ”¹æˆï¼š int b= a.intValue();
 		
 		Integer c= null;
 		if(c!=null){
-			int d = c; //×Ô¶¯²ğÏä£¬µ÷ÓÃÁËc.intValue();
+			int d = c; //è‡ªåŠ¨æ‹†ç®±ï¼Œè°ƒç”¨äº†c.intValue();
 		}
 		
-		//»º´æ[-128,127]Ö®¼äµÄÊı×Ö¡£Êµ¼ÊÊÇÏµÍ³³õÊ¼µÄÊ±ºò£¬´´½¨ÁË[-128£¬127]Ö®¼äµÄÒ»¸ö»º´æÊı×é
-		//µ±ÎÒÃÇµ÷ÓÃvalueOf()µÄÊ±ºò£¬Ê×ÏÈ¼ì²éÊÇ·ñÔÚ[-128,127]Ö®¼ä£¬Èç¹ûÔÚÕâ¸ö·¶Î§ÔòÖ±½Ó´Ó»º´æÊı×éÖĞÄÃ³öÒÑ¾­½¨ºÃµÄ¶ÔÏó
-		//Èç¹û²»ÔÚÕâ¸ö·¶Î§£¬Ôò´´½¨ĞÂµÄInteger¶ÔÏó
+		//ç¼“å­˜[-128,127]ä¹‹é—´çš„æ•°å­—ã€‚å®é™…æ˜¯ç³»ç»Ÿåˆå§‹çš„æ—¶å€™ï¼Œåˆ›å»ºäº†[-128ï¼Œ127]ä¹‹é—´çš„ä¸€ä¸ªç¼“å­˜æ•°ç»„
+		//å½“æˆ‘ä»¬è°ƒç”¨valueOf()çš„æ—¶å€™ï¼Œé¦–å…ˆæ£€æŸ¥æ˜¯å¦åœ¨[-128,127]ä¹‹é—´ï¼Œå¦‚æœåœ¨è¿™ä¸ªèŒƒå›´åˆ™ç›´æ¥ä»ç¼“å­˜æ•°ç»„ä¸­æ‹¿å‡ºå·²ç»å»ºå¥½çš„å¯¹è±¡
+		//å¦‚æœä¸åœ¨è¿™ä¸ªèŒƒå›´ï¼Œåˆ™åˆ›å»ºæ–°çš„Integerå¯¹è±¡
 		Integer in1=Integer.valueOf(-128);
 		Integer in2=-128;
-		System.out.println(in1 == in2);// true ÒòÎª-128ÔÚ»º´æ·¶Î§ÄÚ
+		System.out.println(in1 == in2);// true å› ä¸º-128åœ¨ç¼“å­˜èŒƒå›´å†…
 		System.out.println(in1.equals(in2));//true
 		System.out.println("############");
 		Integer in3=1234;
 		Integer in4=1234;
-		System.out.println(in3==in4); // false ÒòÎª1234²»ÔÚ»º´æ·¶Î§ÄÚ
+		System.out.println(in3==in4); // false å› ä¸º1234ä¸åœ¨ç¼“å­˜èŒƒå›´å†…
 		System.out.println(in3.equals(in4)); //true
 	}
 }
