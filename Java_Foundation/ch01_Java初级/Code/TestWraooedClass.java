@@ -1,26 +1,26 @@
 
 /**
- * ²âÊÔ°ü×°Àà
- * IntergerÀàµÄÊ¹ÓÃ£¬ÆäËû°ü×°ÀàÓÃ·¨ÀàËÆ
- * @author hanbaozhen1
+ * æµ‹è¯•åŒ…è£…ç±»
+ * Intergerç±»çš„ä½¿ç”¨ï¼Œå…¶ä»–åŒ…è£…ç±»ç”¨æ³•ç±»ä¼¼
+ * @author 
  *
  */
 public class TestWraooedClass {
 	void testInteger(){
-		//»ù±¾Êı¾İÀàĞÍ×ª³É°ü×°Àà¶ÔÏó
+		//åŸºæœ¬æ•°æ®ç±»å‹è½¬æˆåŒ…è£…ç±»å¯¹è±¡
 		Integer a= new Integer(3);
-		Integer b=Integer.valueOf(30);//¹Ù·½ÍÆ¼ö´Ë·½·¨
-		//°Ñ°ü×°Àà¶ÔÏó×ª³É»ù±¾Êı¾İÀàĞÍ
+		Integer b=Integer.valueOf(30);//å®˜æ–¹æ¨èæ­¤æ–¹æ³•
+		//æŠŠåŒ…è£…ç±»å¯¹è±¡è½¬æˆåŸºæœ¬æ•°æ®ç±»å‹
 		int c = b.intValue();
 		double d=b.doubleValue();
-		//°Ñ×Ö·û´®×ª»»³É°ü×°Àà¶ÔÏó
+		//æŠŠå­—ç¬¦ä¸²è½¬æ¢æˆåŒ…è£…ç±»å¯¹è±¡
 		Integer e = new Integer("999888");
 		Integer f =Integer.parseInt("1888554");
-		//°Ñ°ü×°Àà×ª»»³É×Ö·û´®
-		String str = f.toString(); // Ò²¿ÉÒÔÓÃ ""+f;
+		//æŠŠåŒ…è£…ç±»è½¬æ¢æˆå­—ç¬¦ä¸²
+		String str = f.toString(); // ä¹Ÿå¯ä»¥ç”¨ ""+f;
 		
-		//³£¼ûµÄ³£Á¿
-		System.out.println("intÀàĞÍ×î´óµÄ³£Á¿"+Integer.MAX_VALUE);
+		//å¸¸è§çš„å¸¸é‡
+		System.out.println("intç±»å‹æœ€å¤§çš„å¸¸é‡"+Integer.MAX_VALUE);
 	}
 	public static void main(String[] args){
 		TestWraooedClass test = new TestWraooedClass();
