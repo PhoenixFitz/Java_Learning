@@ -20,27 +20,17 @@ public class MyGameFrame extends JFrame{
 	Image planeImg=GameUtil.getImage("images/plane.png");
 	Image bgImg=GameUtil.getImage("images/bg.jpg");
 	
-	int planeX=250,planeY=250;
+	Plane plane=new Plane(planeImg,250,250);
+	Plane plane2=new Plane(planeImg,300,300);
+	Plane plane3=new Plane(planeImg,400,400);
 	@Override
 		public void paint(Graphics g) {  //自动被调用  g相当于一直画笔，paint方法作用是，画出整个窗口及内部内容
 		super.paint(g);
-		/*Color c = g.getColor();  //保存之前的画笔颜色
-		Font f=g.getFont();		//保存原字体
-		g.setColor(Color.BLUE);	//更改画笔颜色
-		g.drawLine(100, 100, 300, 300);//从坐标点（100，100）到（300，300）画直线
-		g.drawRect(100, 100, 300, 300);
-		g.drawOval(100, 100, 300, 300);	//画椭圆
-		g.fillRect(100, 100, 40, 40);	//填充矩形块
-		g.setColor(Color.red);
-		g.setFont(new Font("宋体",Font.BOLD,50));
-		g.drawString("klaus", 200, 200);  */
+		g.drawImage(bgImg,0, 0, null);
+		plane.drawSelf(g);  //画飞机
+		plane2.drawSelf(g);
+		plane3.drawSelf(g);
 		
-		g.drawImage(bgImg,0, 0, null);     
-		g.drawImage(planeImg,planeX, planeY, null);
-		planeX++;   
-		
-		/*g.setColor(c);	//还原颜色	
-		g.setFont(f);	//还原字体  */
 		
 	
 		}
