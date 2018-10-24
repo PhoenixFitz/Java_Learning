@@ -6,35 +6,35 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * ²âÊÔÊ±¼ä¶ÔÏóºÍ×Ö·û´®Ö®¼äµÄ»¥Ïà×ª»»
- * DateFormat³éÏóÀàºÍSimpleDateFormatÊµÏÖÀàµÄÊ¹ÓÃ
+ * æµ‹è¯•æ—¶é—´å¯¹è±¡å’Œå­—ç¬¦ä¸²ä¹‹é—´çš„äº’ç›¸è½¬æ¢
+ * DateFormatæŠ½è±¡ç±»å’ŒSimpleDateFormatå®ç°ç±»çš„ä½¿ç”¨
  * @author 
  *
  */
 public class TestDateFormat {
 	public static void main(String[] args) throws ParseException{
 		
-		//°ÑÊ±¼ä¶ÔÏó°´ÕÕ¡°¸ñÊ½×Ö·û´®Ö¸¶¨µÄ¸ñÊ½¡±×ª³ÉÏàÓ¦µÄ×Ö·û´®
+		//æŠŠæ—¶é—´å¯¹è±¡æŒ‰ç…§â€œæ ¼å¼å­—ç¬¦ä¸²æŒ‡å®šçš„æ ¼å¼â€è½¬æˆç›¸åº”çš„å­—ç¬¦ä¸²
 		DateFormat df= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		SimpleDateFormat s2 = new SimpleDateFormat("yyyy-MM-dd");
 		String str = df.format(new Date(40000000));
 		System.out.println(str);
 		System.out.println(s2.format(new Date()));
-        System.out.println(new SimpleDateFormat("hh:mm:ss").format(new Date()));
+       	 	System.out.println(new SimpleDateFormat("hh:mm:ss").format(new Date()));
 		System.out.println("################");
-		//°Ñ×Ö·û´®°´ÕÕ¡°¸ñÊ½×Ö·û´®Ö¸¶¨µÄ¸ñÊ½¡±×ª»»³ÉÏàÓ¦µÄÊ±¼ä¶ÔÏó
+		//æŠŠå­—ç¬¦ä¸²æŒ‰ç…§â€œæ ¼å¼å­—ç¬¦ä¸²æŒ‡å®šçš„æ ¼å¼â€è½¬æ¢æˆç›¸åº”çš„æ—¶é—´å¯¹è±¡
 		
-		DateFormat df2= new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hhÊ±mm·ÖssÃë");
-		Date date=df2.parse("1983Äê05ÔÂ10ÈÕ 10Ê±46·Ö55Ãë");
+		DateFormat df2= new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hhæ—¶mmåˆ†ssç§’");
+		Date date=df2.parse("1983å¹´05æœˆ10æ—¥ 10æ—¶46åˆ†55ç§’");
 		System.out.println(date);
 		date=df.parse("2018-10-06 20:15:30");
 		System.out.println("date1: "+date);
 		String time = "2018-10-06";
-        date = s2.parse(time);
-        System.out.println("date2: " + date);
-        System.out.println("################");
+        	date = s2.parse(time);
+        	System.out.println("date2: " + date);
+        	System.out.println("################");
 		
-		//²âÊÔÆäËûµÄ¸ñÊ½×Ö·û,±ÈÈç£ºÀûÓÃD£¬»ñµÃ¸ÃÊ±¼ä¶ÔÏóÊÇËù´¦Äê·İµÄµÚ¼¸Ìì
+		//æµ‹è¯•å…¶ä»–çš„æ ¼å¼å­—ç¬¦,æ¯”å¦‚ï¼šåˆ©ç”¨Dï¼Œè·å¾—è¯¥æ—¶é—´å¯¹è±¡æ˜¯æ‰€å¤„å¹´ä»½çš„ç¬¬å‡ å¤©
 		DateFormat df3=new SimpleDateFormat("D");
 		String str3=df3.format(new Date());
 		System.out.println(str3);
