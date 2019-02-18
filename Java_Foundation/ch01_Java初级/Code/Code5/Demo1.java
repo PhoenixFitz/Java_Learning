@@ -18,16 +18,21 @@ public class Demo1 {
             Class clazz2 = Class.forName(path); //一个类只对应一个Class对象
             System.out.println(clazz2.hashCode());
             //Class类的获取
-            Class strClazz = String.class;
+            Class strClazz = User.class;
             Class strClazz2 = path.getClass();
+            Class strClazz3 = String.class;
+            System.out.println("---------");
+            System.out.println(strClazz.hashCode());
+            System.out.println(strClazz2.hashCode());
+            System.out.println(strClazz3.hashCode());
 
             int[] arr01 = new int[10];
             int[] arr02 = new int[30];
             int[][] arr03 = new int[30][3];
+            System.out.println("-----------");
             System.out.println(arr01.getClass().hashCode());
             System.out.println(arr02.getClass().hashCode());// arr01 arr02 是同一个Class类对象
             System.out.println(arr03.getClass().hashCode());
-            System.out.println("实时");
 
         } catch (Exception e) {
             e.printStackTrace();
