@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<books>
+  <book id="b01">
+    <name>Thinking in Java</name>
+    <author>li</author>
+    <price>99</price>
+  </book>
+</books>
