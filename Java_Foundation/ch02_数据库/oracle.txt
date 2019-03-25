@@ -254,12 +254,14 @@ oracle上课资料：
 							--count(*)，用来查询表中有多少条记录
 							--count（字段名），用来查询某个字段有值的个数
 							--count(distinct 字段名),可以先去除重复再计数。
+				  使用：select 多行函数名（字段名），多行函数名（字段名）..from 表名
 				  注意：
 					   --多行函数不能和普通字段直接出现在查询语句中，除非group by 
 					   --多行函数和单行函数不能直接出现在查询语句中，除非group by        
 				查看员工的最高工资
 					select max(sal),ename from emp--多行函数不能和普通字段直接出现在查询语句中，除非group by
 					select max(sal)，lower(ename) from emp--多行函数和单行函数不能直接出现在查询语句中，除非group by
+					select ename from emp where sal=(select max(sal) from emp)  --该例可以查最大值对应的ename
 					select ename from emp
 				查看员工的最低工资
 					select min(sal) from emp
@@ -289,14 +291,16 @@ oracle上课资料：
 					select sal, to_char(sal) from emp
 				number-->char 使用指定的格式 
 					to_char(number,'格式')，格式：
-							$代表美元符，9代码数字占位。例如，L999,999,999表示三位一组的显示方式L代表人民币符号，0代表保留数字个数，不足使用0补充。
+							$代表美元符，9代码数字占位。例如，L999,999,999表示三位一组的显示方式，L代表人民币符号，0代表保留数字个数，不足使用0补充。
 															 
 							select to_char(sal),to_char(sal,'L999,999,999') from emp
 							select to_char(sal),to_char(sal,'L0000.00') from emp
 				char--->number  to_number(数字字符)
 							select to_number('123') from dual
+				       ---数值和字符之间的转换可以隐式转换，to_number可以省略不写
 				
 				char--->date，转换的字符必须是日期格式的字符串，默认格式 dd-mm-yyyy
+
 							注意：因为字符串有很多，所以在字符转换为日期的时候，需要指定格式，因为日期是具备一定格式的字符组合。
 								字符转换为日期的时候，指定的格式为字符的日期顺序，无需指定间隔符。
 								yyyy：表示年  mm:表示月   dd表示日
@@ -327,14 +331,14 @@ oracle上课资料：
 				转换函数:to_number to_char to_date
 				-----------------------------------------------------------------------------------------
 				其他函数：
-					1、nvl():nvl(字段名，执行)--相当于java中的if条件判断
-					2、nvl2():nvl2(字段名，值，值)--相当于java中的If(){}else{}判断
+					1、nvl():nvl(字段名，执行)--相当于java中的if条件判断。如果字段值不为null，则返回该字段的值；若为null则返回新的值
+					2、nvl2():nvl2(字段名，处理1，处理2)--相当于java中的If(){}else{}判断；如果字段值不为null，则执行处理1；若为null，则执行处理2.
 					3、decode():decode(字段名，条件1，执行内容1，条件2，执行内容2，条件3，执行内容3，默认执行内容)
 					相当于java中if(){}else if(){}else if(){}...else{}
 				查询所有员工的月薪及姓名和工作
 					select * from emp
 					select ename,sal 基本工资,comm 绩效,sal+comm 月薪 from emp
-					select ename,sal 基本工资,comm 绩效,sal+nvl(comm,0)月薪 from emp
+					select ename,sal 基本工资,comm 绩效,sal+nvl(comm,0)月薪 from emp  
 				查询所有员工的月薪及姓名和工作
 					select ename,sal 基本工资,comm 绩效,nvl2(comm,sal+comm,sal)月薪 from emp
 				显示员工的职称
