@@ -207,18 +207,18 @@ oracle上课资料：
 					select * from emp where sal between 2000 and 3000;--使用between and 关键字进行筛选；
 					--查询工作为SALESMAN,ANALYST,MANAGER的员工信息
 					select  * from emp where job='SALESMAN' or job='ANALYST' or job='MANAGER'--使用or关键字进行"或"的多条件筛选
-					select * from emp where job in('SALESMAN','ANALYST','MANAGER');--使用in关键字进行"或"的多条件筛选
+					select * from emp where job in('SALESMAN','ANALYST','MANAGER');   --使用in关键字进行"或"的多条件筛选
 					select  * from emp where job='ANALYST'
 					--查询姓名中包含s的，以s开头的，以s结尾的，第二个字符为A的。
-					select * from emp where ename like '%S%';--使用like关键字，姓名中包含S的,%代表任意多个字符
-					select * from emp where ename like 'S%';--使用like关键字，以S开头的
-					select * from emp where ename like '%S';--以S结尾的
-					select * from emp where ename like '_A%'--使用"_"指定位置包含指定字符的信息，"_"代表任意一个字符
+					select * from emp where ename like '%S%';    --使用like关键字，姓名中包含S的,%代表任意多个字符
+					select * from emp where ename like 'S%';     --使用like关键字，以S开头的
+					select * from emp where ename like '%S';     --以S结尾的
+					select * from emp where ename like '_A%'     --使用"_"指定位置包含指定字符的信息，"_"代表任意一个字符
 					--------------查询名字中包含下划线的用户信息
-					select * from emp where ename like '%A_%'escape 'A';--使用escape关键字将普通字符设置成为转译字符。
+					select * from emp where ename like '%A_%'escape 'A';  --使用escape关键字将普通字符设置成为转译字符。
 					--查询有津贴的员工信息
 					select * from emp where comm is not null;
-					select * from emp where comm is null;--查询没有津贴的员工信息
+					select * from emp where comm is null;   --查询没有津贴的员工信息
 				
 				
 				
@@ -352,6 +352,7 @@ oracle上课资料：
 						 ---2、多字段进行分组的时候，按照字段顺序进行分组，第一条件分组完成后，继续使用其他条件依次分组。
 						 ---3、group by依然可以和order by 联合使用
 						 ---4、可以和单行函数联合进行分组，注意使用了单行函数那么在查询语句中必须也要使用
+					 	 ---5、在where子句中不允许出现多行函数
 				查询最高工资和员工数
 					select max(sal),count(*) from emp
 				查询不同部门的最高工资
@@ -369,26 +370,28 @@ oracle上课资料：
 				查询部门号大于10的不同部门的不同工作岗位的人数
 					select deptno,job ,count(*) from  emp where deptno>10 group by deptno,job order by deptno
 				使用having进行分组后筛选
-				having学习：
+				having学习： having关键字必须和group by组合使用，不允许单独使用
 					   --1、使用group by分组后在进行数据筛选的时候，where中不能出现多行函数，所以使用新的关键字having进行条件筛选
-					   --2、where条件筛选的执行顺序：from-->where--->group -->select
-					   --3、having条件筛选的执行顺序：from-->group by -->having-->select
-					   --4、where的执行效率比having要高，能使用where的情况下尽量不要使用having
+					   --2、where条件筛选的执行顺序：from-->where--->group by -->select-->order by
+					   --3、having条件筛选的执行顺序：from-->group by -->select -->having-->order by
+					   --4、where子句和having都可以使用普通字段直接进行筛选；但where的执行效率比having要高，能使用where的情况下尽量不要使用having
+					     结论： 在分组语句中，使用where进行字段级别的筛选，使用having进行多行函数的筛选
 				查询不同部门的不同工作岗位的并且人数大于1的信息
-				使用where语句进行筛选
-				where条件语句sql执行顺序：from-->where--->group -->select
-					select count(*) from emp where count(*)>1 group by deptno，job
+				使用where语句进行筛选  
+				where条件语句sql执行顺序：from-->where--->group by -->select-->order by
+					select count(*) from emp where count(*)>1 group by deptno，job   -----此为错误示例，where中不允许出现多行函数。
 				使用having语句进行筛选
-				having条件语句的执行顺序:from-->group by -->having-->select
+				having条件语句的执行顺序:from-->group by -->select -->having-->order by
 					select deptno, count(*) from emp  group by deptno having count(*)>5
-					select deptno,job ,count(*) from  emp  group by deptno,job  having deptno>10 order by deptno
+					select deptno,job ,count(*) from  emp  group by deptno,job  having deptno>10 order by deptno ----order by 都在语句最后
 			
 			第四节课：插入数据学习及数据的备份
+				增删查改的数据sql语句执行完毕后，不会马上将数据写入内存，还需要手动对数据进行提交，如果数据有问题还可以回滚
 				单表查询语句（select）
 				1、插入数据(insert)
 					1、语法规范  insert into 表名(字段1，字段2，字段3，....)values('值1','值2','值3'.....)
-					2、主键：用来唯一标识一条数据的字段通常设置主键，主键是唯一不可以重复的
-					3、如果插入的数据是全字段数据，字段可以省略不写。部分字段，必须加上字段说明和字段值，但是主键不能为空
+					2、主键：用来唯一标识一条数据的字段通常设置主键，主键是唯一不可以重复的，非空唯一的字段可以设置为主键
+					3、如果插入的数据是全字段数据，字段可以省略不写。部分字段，必须加上字段说明和字段值，，值和字段必须一一对应，但是主键不能为空
 					4、事务的提交：如果一个事件是由多个动作组成，只要有一个动作没有执行成功则自动将数据回滚到原始状态，此们技术称之为事务
 								  保证数据的安全和完整
 								  事物的提交：
@@ -410,7 +413,7 @@ oracle上课资料：
 				（3）注意：备份表只有字段和数据相同，并不会备份约束。
 					1、备份完整的数据和表
 						select * from dept;
-						create table tdept as select * from dept;--备份dept表和数据，只能备份数据和字段
+						create table tdept as select * from dept;--备份dept表结构和数据，只能备份数据和字段，约束不会备份
 						select * from tdept
 					2、备份完整表
 						create table tdept1 as select * from dept where 1>2--备份表，不备份数据。
@@ -418,7 +421,7 @@ oracle上课资料：
 					3、备份部分数据和表.create table 表名 as 查询语句，创建的是和查询结果一样的表，查询结果是什么就会备份一个相同的表
 						create table tdept2 as select dname,loc from dept
 						select *from tdept2
-					4、给备份表添加数据 insert into 表名 查询语句，注意：查询出来的结果在结构上必须和插入数据的表相同，字段个数必须相同
+					4、给备份表添加数据 insert into 表名 查询语句，注意：查询语句结果的字段数据必须和插入表名的字段个数一致，类型一致
 						select  * from tdept1
 						insert into tdept1 select dname,loc from dept where deptno>40
 						select *from tdept2
@@ -433,11 +436,11 @@ oracle上课资料：
 					update dept set dname='教学部2',loc='上海' where deptno='70' 
 					select * from dept
 				删除数据：delete
-					1)删除语句：delete 表名 where 条件
+					1)删除语句：delete from 表名 where 条件
 					--删除部门标号为70的数据
-					delete dept where deptno='70'---删除指定数据
+					delete from dept where deptno='70'---删除指定数据
 					select * from dept
-					delete tdept---清空表数据
+					delete from tdept---清空表数据
 					truncate table tdept---清空表数据建议使用truncate关键字，但是此关键字不能回滚数据
 ===================================================================================================================================			
 		第四天：
@@ -449,12 +452,12 @@ oracle上课资料：
 					select * from emp--14
 					select * from dept--7
 					select * from emp,dept order by ename--7*14=98
-				等值链接，链接条件。等值链接的时候字段的名字可以不相同，但是字段的值要相同。
+				等值链接，链接条件。等值链接的时候字段的名字可以不相同，但是字段的值要相同。如果是公共字段，必须声明表名
 					--查询员工姓名，工作，薪资，部门名称
 					select * from emp,dept where emp.deptno=dept.deptno--使用等值链接进行结果筛选
 					select ename,job,sal,dname from emp,dept where emp.deptno=dept.deptno;--使用等值链接查询指定字段数据
 					select ename,job,sal,emp.deptno,dname from emp,dept where emp.deptno=dept.deptno;--多表查询的时候，查看相同字段的值，必须声明所在表
-					select emp.ename,emp.job,emp.sal,emp.deptno,dept.dname from emp,dept where emp.deptno=dept.deptno;--在查询指定字段值的时候，加上表名提高查询效率
+					select emp.ename,emp.job,emp.sal,emp.deptno,dept.dname from emp,dept where emp.deptno=dept.deptno;--在查询指定字段值的时候，加上表名提                                        高查询效率
 					select e.ename,e.job,e.sal,e.deptno,d.dname from emp e,dept d where e.deptno=d.deptno;--多表查询中使用别名进行表的区分
 					select e.ename,e.job,e.sal,e.deptno,d.dname from emp e,dept d where e.deptno=d.deptno order by deptno;--还可以使用order by 排序
 				非等值链接
@@ -468,50 +471,66 @@ oracle上课资料：
 					select * from emp for update
 					create table temp as select * from emp
 					select * from emp e,temp t where e.mgr=t.empno
+					select e1.ename,e1.job,e1.sal,e2.ename from emp e1,emp e2 where e1.mgr=e2.empno
+				外连接：左外连接，加在右边，显示左边对应字段没有值的数据
+					select * from emp e,dept d where e.deptno=d.deptno(+)  --查询员工姓名，工作，薪资，部门名称及没有部门的员工信息
+					
+					右外连接，加在左边，显示右边对应字段没有值的数据
+					select * from emp e,dept d where e.deptno(+)=d.deptno  --查询员工姓名，工作，薪资，部门名称及没有员工的部门
 			
 			第二节课：sql99
 					sql99学习：
+						注意1：如果使用on或者using关键字对结果进行筛选，必须使用inner join作用表与表的连接，其中inner可以省略
+						注意2：外连接的outer关键字可以省略
+						注意3：依然可以继续使用分组，having，排序等
 						交叉链接(没啥用)
 							select * from emp cross join dept
 							自然链接:natural join
 							 (1)、	自然链接会自动使用多表中所有相同字段（不但值相同，名字也要相同）进行筛选
 									前提：多表一定要有同名同值的字段
 									注意：自然连接会自动使用所有的相同字段进行结果筛选
-							（2）、使用using关键字可以指定字段进行链接查询，但是必须是同名字段   inner join
-							（3）、使用on关键字可以直接在其后书写链接条件，没有限制             inner join
+							（2）、使用using关键字可以指定字段进行链接查询，但是必须是同名同值字段   
+								select 内容 from 表名 inner join 表名 using（字段名，字段名，……）
+							（3）、使用on关键字可以直接在其后书写链接条件，没有限制     
+								select 内容 from 表名 inner join 表名 on 连接条件 where 普通筛选条件      
+  
 							查询员工及员工所在的部门信息
 								select * from dept natural join emp
 								select * from dept d,emp e where d.deptno=e.deptno 
+
 							问题1：假如在链接查询的时候不想使用所有相同字段进行筛选怎么办？
 								----使用using关键字
 								---查询员工及员工所在的部门信息
-							select * from dept  join emp using(deptno)
+							select * from dept inner join emp using(deptno)
+
 							问题2：假如在链接查询中没有同名字段，但是有同值字段怎么筛选？
-								   使用on关键字
+							等值筛选使用on关键字，注意：普通筛选条件使用where进行筛选，不要使用on，好处是sql语句的阅读性更好
 							查询员工及员工所在的部门信息
 								select * from dept inner join emp on dept.deptno=emp.deptno
 							查询部门及部门的城市信息
 								select * from dept inner join city on dept.loc=city.cid
 					外链接
-					   （1）、左外链接 left outer join
+					       （1）、左外链接 left outer join
 						(2)、右外链接  right outer join
 						(3)、全外链接  full outer join  
 					左外链接
 						查询没有部门的员工信息及员工和部门信息
-						select * from emp e,dept d where d.deptno(+)=e.deptno--sql92
+						select * from emp e,dept d where d.deptno=e.deptno(+)--sql92
 
 					select *     ---sql99
 					from emp e 
 					left join dept
 					using(deptno)
-					--右外链接
-					select * from emp e,dept d where d.deptno=e.deptno(+)--sql92
+
+					右外链接
+					select * from emp e,dept d where d.deptno(+)=e.deptno--sql92
 
 					select *  ---sql99
 					from emp e
 					right outer join dept d
 					on e.deptno=d.deptno
-					--全外链接
+
+					全外链接
 					select *
 					from emp e
 					full outer join dept d
@@ -521,13 +540,32 @@ oracle上课资料：
 					
 					查询员工姓名，职位，薪资，上级领导姓名
 					  select e.ename,e.job,e.sal,m.ename from emp e,emp m where e.mgr=m.empno--sql92
+
 					sql99实现：
 						select e.ename,e.job,e.sal,m.ename
 						from emp e
 						inner join emp m
 						on e.mgr=m.empno
 					-----------------------------------------------------------------------
-					sql99三表联合查询
+					三表联合查询
+					sql92用法： 
+						--select 内容（别名，连接符，去除重复，oracle函数，逻辑运算）
+						--from 表名1，表名2，表名3
+						--where 条件（连接条件，普通筛选条件，where子句关键字）
+						--group by 分组字段
+						--having 多行函数筛选
+						--order by 排序字段
+
+					sql99用法：
+						--select 内容 from 表名1
+						--inner join 表名2
+						--on 连接条件
+						--inner join 表名3
+						--on 连接条件
+						--where 普通筛选条件
+						--group by 分组
+						--having 多行函数筛选
+						--order by 排序字段
 					查询员工姓名，工作，薪资，部门名称，城市名称
 					sql92实现：
 						select e.ename,e.job,e.sal,d.dname,c.cname 
@@ -563,9 +601,10 @@ oracle上课资料：
 						1、什么时候使用单行子查询？
 							--在不能直接获取有效信息的时候，考虑使用子查询
 						2、单行子查询的注意事项？
-							---子查询的结果必须只有一个值
+							---子查询的*结果必须只有一个值*
 							---可以直接使用算术链接符
 							---子查询出现在where中,一般出现在条件语句的右边
+						3、使用：select 内容 from 表名 where 字段名 比较运算符 子查询语句
 				问题：查询所有比雇员“CLARK”工资高的员工信息
 				解读1：查询雇员CLARK的工资
 				select sal from emp where ename='CLARK'
@@ -588,10 +627,16 @@ oracle上课资料：
 				查询工资高于任意一个CLERK的所有员工信息
 				select * from emp where sal>(select min(sal) from emp where job='CLERK') and job<>'CLERK'
 				----------------------------------------------------------------------------------------------
-			第五节课：	多行子查询
+			第五节课：多行子查询
 				
 				多行子查询学习：其实就使用使用关键字：any all in
+
+				any-任意： select 内容 from 表名 where 字段名 比较运算符 any 子查询语句
+				all-所有： select 内容 from 表名 where 字段名 比较运算符 all 子查询语句
+				in- 任意存在，相当于 = any ：select 内容 from 表名 where 字段名 in 子查询语句 ；select 内容 from 表名 where 字段名 not in 子查询语句
+
 				注意：子查询返回多个值建议使用多行子查询，返回的单个值使用单行子查询
+
 				select * from emp where sal> any (select sal from emp where job='CLERK') and job<>'CLERK'
 				查询工资高于所有SALESMAN的员工信息
 				select * from emp where sal>(select max(sal) from emp where job='SALESMAN')--单行子查询的写法
@@ -605,11 +650,12 @@ oracle上课资料：
 			第六节课：用户创建
 					创建用户
 					当前用户介绍：权限级别的分配
-					-------system：系统账户
-					-------sys：超级管理员
+					-------system：系统账户，具备大部分oracle的操作权限，用来管理普通账户和oracle数据，oracle数据维护工作人员使用
+					-------sys：超级管理员，具备system的所有权限，又具备其他权限
 					-------scott：普通用户
 
-					1、	创建自定义用户: create user 用户名 identified by 密码；
+					1、	创建自定义用户:使用system账户，并使用dba身份，登陆oracle管理系统
+							 create user 用户名 identified by 密码；
 							普通用户不具备创建用户的权限，需要使用system账户进行创建
 							直接创建好的用户不能登录，还需要使用system进行权限的分配（角色：一系列权限的集合）
 							create user zyp identified by 123456;
@@ -618,7 +664,7 @@ oracle上课资料：
 							grant resource to zyp;--赋予操作资源权限
 							grant dba to zyp;--赋予DBA角色
 							grant dba to zyp
-						删除用户权限
+						删除用户权限     revoke 权限或角色名 from 用户名
 							revoke dba from zyp
 							revoke connect from zyp
 					2、	删除用户
@@ -637,13 +683,14 @@ oracle上课资料：
 						   qq number,
 						   sal number(6,2),--指定工资的整数位为6和小数位为2
 						   mail varchar2(50)
+						   birth date
 						)
 					2、字段类型
-						number类型：数字类型，用来声明存储数字的字段。 number(指定数字的整数长度，指定数字的小数位长度)
+						number类型：数字类型，用来声明存储数字的字段。 number(指定数字的总长度，指定数字的小数位长度)number(a,b)
 						varchar2类型：字符类型，用来声明存储字符的字段。会根据存储的数据自动增长大小，varchar2(存储上限)
-						char类型：字符类型，用来声明存储字符的字符。会开辟指定大小的内存来存储数据。
+						char类型：字符类型，用来声明存储字符的字符。直接开辟指定大小的内存来存储数据。
 							区别1：char的存储效率高于varchar2
-							区别2：char是开辟指定大小的内存空间，varchar2是根据数据大小来开辟空间的大小
+							区别2：char是开辟指定大小的内存空间，varchar2是根据数据大小动态分配空间的大小
 						date类型：存储日期类型
 				第二节课：修改表学习：
 					修改表
