@@ -815,10 +815,11 @@ oracle上课资料：
 							select * from stu
 						问题1：在插入学生信息的时候，出现了不存在的班级信息？
 							   使用外键约束
-								   --（1）、在字段后使用 references 参照表表名(参照字段)
-								   --（2）、在所有字段后使用 constraints fk_表名_字段名 foreign key(字段名) references 参照表名(参照字段名)
-								   --（3）、在创建表后使用alter table 表名 add constraints fk_表名_字段名 foreign key(字段名) references 参照表名(参照字段名)
-								   --删除外键 alter table 表名 drop constraints fk_表名_字段名
+							--（1）、在字段后使用 references 参照表表名(参照字段)
+							--（2）、在所有字段后使用 constraints fk_表名_字段名 foreign key(字段名) references 参照表名(参照字段名)
+							--（3）、在创建表后使用alter table 表名 add constraints fk_表名_字段名 foreign key(字段名) references
+								参照表名(参照字段名)
+								--删除外键 alter table 表名 drop constraints fk_表名_字段名
 
 							select table_name from all_all_tables where owner='SCOTT'
 
@@ -889,7 +890,6 @@ oracle上课资料：
 =====================================================================================================================================
 			
 			
-			
-			
+	
 			
 		
