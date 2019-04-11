@@ -36,7 +36,7 @@ drop database
 
 ### （6）创建表
 语句： create table 表名（字段名 类型 约束，字段名 类型 约束，……）  
-**注意**：MySQL是没有序列的，但可以在创建表的时候直接指定主键是递增的，在创建表的字段后使用auto_increment  
+**注意**：MySQL是没有序列的，但可以在创建表的时候直接指定主键是递增的，在创建表的字段后使用**auto_increment**  
 https://blog.csdn.net/a909301740/article/details/62887992
 
 ### （7）数据类型
@@ -60,4 +60,72 @@ https://blog.csdn.net/a909301740/article/details/62887992
 - blob, 存放二进制文件
 - text, 存放大量文本信息
 
-### （8）表的修改删除
+### （8）约束（跟Oracle创建约束类似）
+#### 1）主键约束
+在创建表时，字段后使用 primary key  
+创建表语句最后面 使用constraint 约束名 primary key（主键字段名）
+#### 2）非空约束
+在创建表时，字段后使用 not null， **注意**：mysql的非空约束中空字符是可以存储进去的，Oracle不可以  
+在创建表完成后， 使用alter table 表名 modify 字段名 类型 not null 
+#### 3）检查约束
+问题：在mysql中是没有检查约束，但是使用check关键字不会报错。  
+解决：使用代码逻辑进行无效数据的过滤（常用）；使用mysql的存储过程
+#### 4）唯一约束
+字段名后使用unique
+#### 5）外键约束
+字段名后直接使用 references 父表名（字段名）  
+创建语句后：constraint 外键约束名 foreign key(字段名) references 父表名（字段名）  
+在创建表之后： alter table 表名 add  constraint 外键约束名 foreign key (字段名) references 父表名（字段名） on delete set null on update cascade;
+
+### （9）表的修改删除
+#### 1）添加字段
+alter table 表名 add 字段名 类型
+#### 2）删除字段
+alter table 表名 drop 字段名
+#### 3）修改字段类型
+alter table 表名 modify 字段名 字段类型
+#### 4）修改字段名
+alter table 表名 change 字段名 新字段名 类型
+#### 5）修改表名
+alter table 表名 rename as 新表名
+#### 6）删除表
+drop table 表名
+
+### （10）其他操作
+- 显示表信息 show tables
+- 显示创建表语句 守望 create table 表名
+- 显示库 show databases
+
+### （11）数据操作
+#### 1）查询
+单表查询：
+- 别名：直接空格在后面使用
+- 去除重复： distinct关键字
+- 连接符：使用concat（字段名，字段名）
+- where子句：跟oracle一样  
+- 函数：max,min,avg,sum,count
+- 分组：group by 关键字 ，**注意**分组可以和字段一起使用
+- having ：分组后筛选
+- 排序： order by 字段名  
+ 
+多表查询：SQL92和SQL99:和oracle一样，
+#### 2）增加
+insert into 表名 values（值1，值2，值3....）；全字段插入
+insert into 表名（主键字段名，字段名，字段名....） values（值1，值2，值3....）； 部分字段插入
+#### 3）删除
+delete from 表名 where 条件
+#### 4）修改
+update 表名 set 字段名= 值， 字段名=值....where 条件
+
+### （12）分页
+MySQL分页需要使用** limit **关键字, limit 后需要跟两个数字, 第一个数字表示查询的起始位置, 第二个数字表示查
+询的记录数. limit 要写在 order by 之后.
+- 当前页数page， 每页显示的记录数size，select * from clazz limit (page-1)*size, size;
+
+### （13）数据备份
+命令方式：
+- 导出：mysqldump -u root -p 数据库名 > dbname.sql（整个库）；mysqldump -u root -p 数据库名 表名> dbname.sql（只导出一个表）
+- 导入：mysql>source d:\dbname.sql； 或者mysql -u root -p 数据库名 < dbname.sql  
+工具方式：
+- 导出：直接在库上右键选择导出数据库
+- 导入：在库上右键选择导入数据库

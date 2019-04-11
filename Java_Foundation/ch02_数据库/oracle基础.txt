@@ -369,6 +369,7 @@ oracle上课资料：
 					select deptno,job ,count(*) from emp where count(*)>1 group by deptno,job order by deptno
 				查询部门号大于10的不同部门的不同工作岗位的人数
 					select deptno,job ,count(*) from  emp where deptno>10 group by deptno,job order by deptno
+
 				使用having进行分组后筛选
 				having学习： having关键字必须和group by组合使用，不允许单独使用
 					   --1、使用group by分组后在进行数据筛选的时候，where中不能出现多行函数，所以使用新的关键字having进行条件筛选
