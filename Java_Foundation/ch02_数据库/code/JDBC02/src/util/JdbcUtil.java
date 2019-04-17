@@ -21,7 +21,7 @@ public class JdbcUtil {
         //创建properties对象获取属性文件的内容
         Properties p=new Properties();
         //获取属性文件的读取流对象
-        InputStream is=JdbcUtil.class.getResourceAsStream("/db.properties");
+        InputStream is=JdbcUtil.class.getResourceAsStream("/db.properties"); //动态获取
         try {
             //加载属性配置文件
             p.load(is);
@@ -99,7 +99,7 @@ public class JdbcUtil {
         }
     }
 
-    //封装DML
+    //封装DML  增删改
     public static int executeDML(String sql,Object...objs){
         //创建连接对象
         Connection conn=getConnection();

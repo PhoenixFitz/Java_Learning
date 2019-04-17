@@ -18,15 +18,15 @@ import java.util.Scanner;
  * 		使用preparedStatement
  * 使用:
  * 		声明集合或者实体类对象(可选-查询)      	声明集合或者实体类对象(可选-查询)
- * 		加载驱动							加载驱动
- * 		获取连接对象						获取连接对象
- * 										创建sql命令
- * 		获取SQL命令对象(statement)			获取SQL命令对象(preparedStatement)
- * 		创建sql命令						给占位符赋值
- * 		执行sql命令						执行sql命令
- * 		遍历结果(可选-查询)					遍历结果(可选-查询)
- * 		关闭资源							关闭资源
- * 		返回结果							返回结果
+ * 		加载驱动							        加载驱动
+ * 		获取连接对象						        获取连接对象
+ * 										        创建sql命令
+ * 		获取SQL命令对象(statement)			     获取SQL命令对象(preparedStatement)
+ * 		创建sql命令						        给占位符赋值（？）（占位符从左到右角标从1开始）
+ * 		执行sql命令						        执行sql命令
+ * 		遍历结果(可选-查询)					    遍历结果(可选-查询)
+ * 		关闭资源							        关闭资源
+ * 		返回结果							        返回结果
  * 特点:
  * 		防止sql注入
  * 		提升sql语句的执行效率(preparedStatement有预编译的过程)

@@ -99,7 +99,26 @@ boolean execute(String sql) |可以执行任意SQL语句，然后获得一个布尔值，表示是否返
 int executeUpdate(String sql) |执行SQL查询并获取到ResultSet对象  
 
 ## 8.preparedStatement对象完成增加删除修改查找
+问题：使用Statement对象进行数据库操作的时候可能会出现sql注入的风险.  
+解决：使用preparedStatement  
+特点：防止sql注入；提升sql语句的执行效率(preparedStatement有预编译的过程)。  
+Statement和preparedStatement使用步骤比较：
+Statement|preparedStatement
+|:---:|:---:|
+声明集合或者实体类对象(可选-查询)|声明集合或者实体类对象(可选-查询)
+加载驱动|加载驱动
+获取连接对象|获取连接对象
+null|创建sql命令
+获取SQL命令对象(Statement)createStatement();|获取SQL命令对象(PreparedStatement)prepareStatement(sql);
+创建sql命令|给占位符赋值（？）（占位符从左到右角标从1开始）
+执行sql命令|执行sql命令
+遍历结果(可选-查询)|遍历结果(可选-查询)
+关闭资源、返回结果|关闭资源、返回结果  
+
 [JDBC02](code/JDBC02/src)
+## 9.JDBC封装
+- 将JDBC参数在功能类中提取为全局变量
+- 将JDBC参数存储到properties属性配置文件中，封装工具类进行获取；**注意**：properties文件是专门用来存储属性配置的文件，格式要求必须是键值对，以'='隔开，一行一组键值对，并且不能用分号结尾。可以使用Properties对象来进行读取该文件的内容。
 
 
 
