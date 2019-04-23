@@ -1,4 +1,4 @@
-# JDBC
+﻿# JDBC
 ## 1.java数据的获取方式
 - 直接声明变量并赋值
 - Scanner类控制台输入
@@ -120,8 +120,38 @@ null|创建sql命令
 [JDBC02](code/JDBC02/src)
 ## 9.JDBC封装
 - 将JDBC参数在功能类中提取为全局变量
-- 将JDBC参数存储到properties属性配置文件中，封装工具类进行获取；**注意**：properties文件是专门用来存储属性配置的文件，格式要求必须是键值对，以'='隔开，一行一组键值对，并且不能用分号结尾。可以使用Properties对象来进行读取该文件的内容。
+- 将JDBC参数存储到properties属性配置文件中，封装工具类进行获取；**注意**：properties文件是专门用来存储属性配置的文件，格式要求必须是键值对，以'='隔开，一行一组键值对，并且不能用分号结尾。可以使用Properties对象来进行读取该文件的内容。  
+[JDBC_case](code/JDBC_case/src)
 
+## 10.log4j
+log4j是一个日志输出的插件，专门用来进行日志的管理。  
+日志是系统运行过程中的后台输出信息，方便程序员进行系统运行的管控以及BUG的查找。  
+特点：
+- 日志可以单独保存在文件中
+- 可以获取完整的日志信息
+- 可以进行日志显示的筛选
+- 格式友好  
 
+### （1）使用流程
+- 导入log4j的jar包
+- 配置log4j的配置文件
+- 在使用log4j的类中声明全局的Logger对象 `public static Logger logger = Logger.getLogger(类名.class);
+- 使用Logger对象调用日志方法进行日志输出语句声明  
+```
+logger.debug("我是debug信息");//一般在方法内部使用
+logger.info("我是info信息");//一般在调用方法使用
+logger.warn("我是警告信息");//一般在需要警告的位置使用
+logger.error("我是错误信息");//在catch代码块中使用
+logger.fatal("我是致命的错误信息");//在catch代码块中使用
+```  
+
+### （2）log4j的日志级别
+- FATAL ：致命的错误
+- ERROR ：异常
+- WARN ：警告
+- INFO ：信息（方法级别）
+- DEBUG ：调试（代码级别）
+### （3）log4j的配置文件解释
+配置文件一定要存放在src下，并命名为log4j.properties
 
 
