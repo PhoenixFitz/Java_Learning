@@ -129,3 +129,41 @@ MySQL分页需要使用** limit **关键字, limit 后需要跟两个数字, 第一个数字表示查询的
 工具方式：
 - 导出：直接在库上右键选择导出数据库
 - 导入：在库上右键选择导入数据库
+
+## 3.MySQL优化
+### （1）索引
+常用索引介绍：
+- B-Tree索引：所有的索引节点都按照balancetree的数据结构来存储，所有的索引数据节点都在叶节点
+- Full-text索引：全文索引，存储结构也是B-Tree，主要是为了解决需要用like查询的低效问题
+### （2）索引创建
+#### 1）直接创建
+CREATE INDEX [index_name] ON [table_name](column(length))
+#### 2）修改表结构的方式、
+ALTER TABLE table_name ADD INDEX index_name(column(length))
+#### 3）创建表时指定索引
+CREATE TABLE test (id int not null auto_increment, title varchar(30), PRIMARY KEY(id),INDEX title_index(title))
+#### 4）查看索引
+SHOW INDEX FROM [table_name]
+#### 5）删除索引
+DROP INDEX [index_name] ON [table_name]  
+ALTER TABLE [table_name] DROP INDEX [index_name]
+
+## 4.数据库表的设计
+- 业务需要学会切分
+- 逻辑分层（数据库分层）
+- 数据库表结构设计与拆分：mysql水平拆分（分片）；分区；物化视图；中间表方案；设计方案
+
+## 5.对于结构优化的设计
+- 建立索引：普通索引；规则索引；复合索引
+- 数据规则（添加认为有必要的扩展字段）
+- 预留字段（用于关联其他业务的）
+- 做一些合理的冗余
+
+
+
+
+
+
+
+
+
