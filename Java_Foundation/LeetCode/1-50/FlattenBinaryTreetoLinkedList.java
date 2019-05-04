@@ -28,6 +28,7 @@ package stage.one.klaus;
  */
 public class FlattenBinaryTreetoLinkedList {
 
+    //recursion
     public void flatten(TreeNode root) {
         if (root == null)
             return;
@@ -42,4 +43,25 @@ public class FlattenBinaryTreetoLinkedList {
             root = root.right;
         root.right = temp;
     }
+
+
+    //Non-recursion
+    public void flatten02(TreeNode root){
+        if (root == null)
+            return;
+        TreeNode cur = root;
+        while(cur != null){
+            if(cur.left != null) {
+                TreeNode temp = cur.left;
+                while (temp.right != null)
+                    temp = temp.right;
+                temp.right = cur.right;
+                cur.right = cur.left;
+                cur.left = null;
+            }
+            cur = cur.right;
+        }
+    }
+
+
 }
