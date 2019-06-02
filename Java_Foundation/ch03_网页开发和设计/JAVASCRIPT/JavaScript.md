@@ -333,14 +333,64 @@ window.opener.父页面的函数
 
 **注意**：尽量的不要去修改元素的**id值和name属性值**。使用**自定义方式**获取固有属性内容，value的值获取的是**默认值**，**不能够获取到实时的用户数据**。
 
+## 18.获取元素对象
+### （1）获取
+- 元素对象名.innerHTML//返回当前元素对象的所有内容，包括HTML标签
+- 元素对象名.innerHTML//返回当前元素对象的文本内容，不包括HTML标签
+### （2）修改
+- 元素对象名.innerHTML="新的值"//会将原有内容覆盖，并HTML标签会被解析
+- 元素对象名.innerHTML=元素对象名.innerHTML+"新的值"//追加效果
+- 元素对象名.innerText="新的值"//会将原有内容覆盖，但HTML标签不会被解析，会作为普通文本显示。
+
+## 19.js操作元素样式
+获取元素对象
+### （1）通过style属性
+- 元素对象名.style.样式名="样式值"//添加或者修改
+- 元素对象名.style.样式名=""//删除样式  
 
 
+**注意**:以上操作，操作的是HTML的style属性声明中的样式。而不是其他css代码域中的样式。
+### （2）通过className
+- 元素对象名.className="新的值"//添加类选择器样式或者修改类选择器样式
+- 元素对象名.className=""//删除类样式。
 
+## 20.js操作元素的文档结构
+增加节点，删除节点。
+第一种方式：
+```
+div.innerHTML=div.innerHTML+"内容"//增加节点
+div.innerHTML=""//删除所有子节点
+父节点.removeChild(子节点对象)//删除指定的子节点。
+```  
+第二种方式：获取元素对象
+```
+var obj=document.createElement("标签名");
+元素对象名.appendChild(obj);
+```  
 
+## 21.js操作form表单
+### （1）获取form表单对象
+- 使用id:var fm=document.getElementById("fm");
+- 使用name属性:var frm=document.frm;
 
+### （2）获取form下的所有表单元素对象集合
+fm.elements  
+### （3）form表单的常用方法
+表单对象.submit();//提交表单数据。
+### （4）form的属性操作
+- 表单对象名.action="新的值"//动态的改变数据的提交路径。
+- 表单对象名.method="新的值"//动态的改变提交方式
+            
+### （5）js表单元素的通用属性
+- 只读模式:readonly="readonly"//不可以更改，但是数据可以提交
+- 关闭模式：disabled="disabled"//不可以进行任何的操作，数据不会提交。
 
+### （6）js操作多选框、单选框
+被选中状态下在js中checked属性值为true,未选中状态为false;
 
+### （7）js操作下拉框：
+被选择的option对象在js中selected属性值为true，未选中为false
 
-
+## 22.js校验form表单
 
 
