@@ -187,4 +187,82 @@ hs.invalidate();
 #### 7）小结
 session解决了一个用户的不同请求的数据共享问题，只要在JSESSIONID不失效和session对象不失效的情况下。用户的任意请求在处理时都能获取到同一个session对象。
 
-### （3）
+### （3）解决主页面用户名显示为null的问题
+原因：因为在用户登录成功后使用重定向显示主页面，两次请求，而用户的信息在第一次请求中，第二次请求中没有用户数据，所以显示为null。  
+解决：使用session。
+
+### （4）ServletContext对象
+作用：解决了不同用户的数据共享问题。  
+原理：ServletContext 对象由服务器进行创建，一个项目只有一个对象。不管在项目的任意位置进行获取得到的都是同一个对象，那么不同用户发起的请求获取到的也就是同一个对象了，该对象由用户共同拥有。  
+特点：服务器进行创建，用户共享，一个项目只有一个。  
+作用域：整个项目内。  
+生命周期：服务器启动到服务器关闭。  
+#### 1）获取ServletContext对象
+- 第一种方式 ServletContext sc=this.getServletContext();
+- 第二种方式 ServletContext sc2=this.getServletConfig().getServletContext();
+- 第三种方式 ServletContext sc3=req.getSession().getServletContext();
+#### 2）使用ServletContext对象完成数据共享
+- 数据存储sc.setAttribute(String name, Object value);
+- 数据获取sc.getAttribute("str") 返回的是Object类型  
+
+**注意**：不同的用户可以给ServletContext对象进行数据的存取；获取的数据不存在返回null。
+#### 3）获取项目中web.xml文件中的全局配置数据
+- sc.getInitParameter(String name); 根据键的名字返回web.xml中配置的全局数据的值，返回String类型。如果数据不存在返回null。
+- sc.getInitParameterNames();返回键名的枚举
+#### 4）配置方式
+一组<context-param>标签只能存储一组键值对数据，多组可以声明多个 <context-param>进行存储。
+```
+<context-param>
+	<param-name>name</param-name>
+	<param-value>zhangsan</param-value>
+</context-param>
+```  
+
+作用：将静态数据和代码进行解耦。
+#### 5）获取项目webroot下的资源的绝对路径。
+String path=sc.getRealPath(String path);   获取的路径为项目根目录，path参数为项目根目录中的路径。
+#### 6）获取webroot下的资源的流对象
+InputStream is = sc.getResourceAsStream(String path);  
+注意：此种方式只能获取项目根目录下的资源流对象，class文件的流对象需要使用类加载器获取。path参数为项目根目录中的路径。
+#### 7）使用ServletContext对象完成网页计数器
+在用户登录校验中创建计数器并自增，然后存储到ServletContext对象中，在主页面里取出计数器数据显示给用户即可。
+
+## 4.SerlvetConfig
+作用：ServletConfig 对象是Servlet 的专属配置对象，每个Servlet 都单独拥有一个ServletConfig 对象，用来获取web.xml 中的配置信息。  
+使用：获取ServletConfig 对象，获取web.xml 中servlet 的配置信息
+
+## 5.小结
+### （1）Web.xml文件使用总结
+作用：存储项目相关的配置信息，保护Servlet。解耦一些数据对程序的依赖。  
+使用位置：
+- 每个Web 项目中
+- Tomcat 服务器中(在服务器目录conf 目录中)  
+
+区别：
+- Web 项目下的web.xml 文件为局部配置，针对本项目的位置。
+- Tomcat 下的web.xml 文件为全局配置，配置公共信息。  
+
+内容(核心组件)：
+- 全局上下文配置(全局配置参数)
+- Servlet 配置
+- 过滤器配置
+- 监听器配置  
+
+加载顺序：Web 容器会按ServletContext -> context-param -> listener -> filter -> servlet 这个顺序加载组件，这些元素可配置在web.xml文件中的任意位置。
+
+### （2）server.xml文件
+Server.xml 文件核心组件：
+```
+<Server>
+<Service>
+<Connector />
+<Connector />
+<Engine>
+<Host>
+<Context />
+</Host>
+</Engine>
+</Service>
+</Server>
+```  
+热部署：<Context path ="/Pet" reloadable ="true" docBase ="F:/PetWeb" />
