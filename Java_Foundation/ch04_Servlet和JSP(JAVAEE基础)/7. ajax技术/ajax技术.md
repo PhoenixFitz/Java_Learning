@@ -83,6 +83,25 @@ ajax.open("post", "url");
 ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  
 ajax.send("name=张三&pwd=123");  
 
-## 6.相应数据格式
+## 6.响应数据格式
+- 在当前页面内显示查询结果，考虑使用ajax
+- 创建ajax函数
+- 调用ajax函数发送请求到UserServlet
+- 调用业务层获取对应的数据
+### （1）json(重点)：responseText
+其实就是将数据按照json的格式拼接好的字符串，方便使用eval方法，将接受的字符串数据直接转换为js的对象。  
+json格式：
+```
+var 对象名={
+												属性名:属性值,
+												属性名:属性值,
+												……
+}
+```  
 
+### （2）XML数据
+后台在接收到ajax请求后，处理后响应xml格式的字符串给ajax，前台使用ajax.responseXML进行数据接收，返回的是xml文档对象(document)。通过document对象将数据从xml中获取出来。  
+后台的响应数据格式必须设置成xml格式：resp.setContentType("text/xml;charset=utf-8");
+
+## 7.ajax的封装
 
