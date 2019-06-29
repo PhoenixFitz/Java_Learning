@@ -57,6 +57,11 @@ ${empty 键名}
 - ${cookie.键名.value}--->返回指定的cookie对象存储的数据的值。
 
 ## 9.JSTL标签库概述
+JSTL 是apache 对EL 表达式的扩展（也就是说JSTL 依赖EL），JSTL 是标签语言！JSTL 标签使用以来非常方便，它与JSP 动作标签一样，只不过它不是JSP 内置的标签，需要我们自己导包，以及指定标签库而已！  
+
+作用：用来提升在JSP 页面的逻辑代码的编码效率，使用标签来替换逻辑代码的直接书写，高效，美观，整洁，易读。
+
+## 10.JSTL标签库使用
 - 导入jar包
 - 声明jstl标签库的引入(核心标签库)：<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 内容：
@@ -116,9 +121,9 @@ ${empty 键名}
 - var:声明变量记录每次循环的结果。存储在作用域中，需要使用EL表达式获取。	
 
 
-## 10.JSTL标签库的作用
+## 11.JSTL标签库的作用
 
-## 11.JSTL的核心标签库
+## 12.JSTL的核心标签库
 
 
 学习网址：http://www.runoob.com/jsp/jsp-jstl.html
